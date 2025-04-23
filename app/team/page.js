@@ -1,31 +1,50 @@
+'use client'
+
 import Link from 'next/link'
+import TeamMemberCard from '../../components/team/teamMemberCard'
+import { Brain, Laptop2, Hammer } from 'lucide-react'
+
 
 export default function TeamPage() {
+  const backgroundImage = "/background.avif";
+  const linkedInLink = 'https://www.linkedin.com/in/'
   const teamMembers = [
-    { name: 'Yuvraj Bhalla', emoji: '🧠' },
-    { name: 'Japsanjam Singh', emoji: '💻' },
-    { name: 'Amandeep Singh', emoji: '🛠️' },
+    {
+      name: 'Yuvraj Bhalla',
+      icon: Brain,
+      linkedInUrl: `${linkedInLink}yuvraj-bhalla/`
+    },
+    {
+      name: 'Japsanjam Singh',
+      icon: Laptop2,
+      linkedInUrl: `${linkedInLink}japsanjam-singh-7094ab2a3/`
+    },
+    {
+      name: 'Amandeep Singh',
+      icon: Hammer,
+      linkedInUrl: `${linkedInLink}amandeep-singh-46491726a/`
+    },
   ]
 
   return (
     <main
       className="min-h-screen flex items-center justify-center px-4 py-12 bg-cover bg-center text-white"
       style={{
-        backgroundImage: "url('background.avif')",
+        backgroundImage:
+          `url('${backgroundImage}')`,
       }}
     >
-      <div className="relative z-10 bg-gray-800/40 backdrop-blur-lg p-10 rounded-xl text-white shadow-xl w-full max-w-2xl text-center border border-white/20">
-        <h1 className="text-4xl font-bold mb-8 text-white">👥 Meet the Team</h1>
+      <div className="bg-gray-900/80 backdrop-blur-lg p-10 rounded-xl shadow-xl w-full max-w-3xl text-center border border-white/20">
+        <h1 className="text-4xl font-bold mb-8 text-white">Meet the Team</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {teamMembers.map((member, idx) => (
-            <div
+            <TeamMemberCard
               key={idx}
-              className="bg-gray-800/80 rounded-xl p-6 text-white transition border border-amber-100"
-            >
-              <div className="text-3xl mb-2">{member.emoji}</div>
-              <p className="text-lg font-medium">{member.name}</p>
-            </div>
+              name={member.name}
+              Icon={member.icon}
+              linkedInUrl={member.linkedInUrl}
+            />
           ))}
         </div>
 

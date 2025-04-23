@@ -1,14 +1,18 @@
-import Link from 'next/link'
+'use client'
+
+import { Search, Users, SunIcon } from 'lucide-react'
+import NavButton from '../components/home/navButton'
+
+const backgroundImage = '/background.avif'
 
 export default function HomePage() {
   return (
     <main
       className="relative min-h-screen bg-cover bg-center bg-no-repeat px-4 flex items-center justify-center"
       style={{
-        backgroundImage: `url('background.avif')`,
+        backgroundImage: `url(${backgroundImage})`,
       }}
     >
-      
       <div className="relative z-10 bg-gray-800/40 backdrop-blur-lg p-10 rounded-xl text-white shadow-xl w-full max-w-2xl text-center border border-white/20">
         <div className="text-6xl mb-4">⛅</div>
         <h1 className="text-4xl font-bold mb-3">WeatherApp</h1>
@@ -17,18 +21,8 @@ export default function HomePage() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/search"
-            className="flex items-center gap-2 px-6 py-3 bg-white/20 text-white border border-white/30 rounded-lg shadow hover:bg-white/30 transition"
-          >
-            🔍 <span>Search Weather</span>
-          </Link>
-          <Link
-            href="/team"
-            className="flex items-center gap-2 px-6 py-3 bg-white/20 text-white border border-white/30 rounded-lg shadow hover:bg-white/30 transition"
-          >
-            👨‍💻 <span>Meet the Team</span>
-          </Link>
+          <NavButton href="/search" icon={Search} label="Search Weather" />
+          <NavButton href="/team" icon={Users} label="Meet the Team" />
         </div>
       </div>
     </main>
